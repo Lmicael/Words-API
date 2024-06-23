@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação Words API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .endpoint {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .endpoint h2 {
+            margin-top: 0;
+        }
+
+        .endpoint p {
+            margin-top: 5px;
+        }
+
+        .code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+        }
+
+        .example {
+            margin-top: 10px;
+        }
+
+        .example pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Documentação Words API</h1>
+
+        <div class="endpoint">
+            <h2>POST /vowel_count</h2>
+            <p>Conta o número de vogais em cada palavra fornecida.</p>
+            <p><strong>Requisição:</strong></p>
+            <div class="code">
+                <pre><code>POST "http://127.0.0.1:5000/vowel_count"
+Content-Type: application/json
+
+{
+    "words": ["Darth Vader", "Han Solo", "Mestre Yoda", "Obi-Wan Kenobi"]
+}</code></pre>
+            </div>
+            <p><strong>Resposta:</strong></p>
+            <div class="code">
+                <pre><code>{
+    "Darth Vader": 3,
+    "Han Solo": 3,
+    "Mestre Yoda": 4,
+    "Obi-Wan Kenobi": 6
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <h2>POST /sort</h2>
+            <p>Ordena as palavras em ordem crescente ou decrescente.</p>
+            <p><strong>Requisição:</strong></p>
+            <div class="code">
+                <pre><code>POST "http://127.0.0.1:5000/sort"
+Content-Type: application/json
+
+{
+    "words": ["Darth Vader", "Han Solo", "Mestre Yoda", "Obi-Wan Kenobi"],
+    "order": "asc"
+}</code></pre>
+            </div>
+            <p><strong>Resposta:</strong></p>
+            <div class="code">
+                <pre><code>[
+    "Darth Vader",
+    "Han Solo",
+    "Mestre Yoda",
+    "Obi-Wan Kenobi"
+]</code></pre>
+            </div>
+            <div class="code">
+                <pre><code>POST "http://127.0.0.1:5000/sort"
+Content-Type: application/json
+
+{
+    "words": ["Darth Vader", "Han Solo", "Mestre Yoda", "Obi-Wan Kenobi"],
+    "order": "desc"
+}</code></pre>
+            </div>
+            <p><strong>Resposta:</strong></p>
+            <div class="code">
+                <pre><code>[
+    "Obi-Wan Kenobi",
+    "Mestre Yoda",
+    "Han Solo",
+    "Darth Vader"
+]</code></pre>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <h2>Erros</h2>
+            <p>As respostas de erro possíveis incluem:</p>
+            <ul>
+                <li><strong>400 Bad Request:</strong> O conteúdo da requisição está incorreto ou faltando.</li>
+                <li><strong>404 Not Found:</strong> O endpoint requisitado não existe.</li>
+                <li><strong>405 Method Not Allowed:</strong> O método HTTP usado não é permitido para este endpoint.
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
